@@ -15,4 +15,3 @@ composer require laravel/cashier
 
 ## Criar as tabelas para rodar o Cashier
 rodar php artisan migrate
-
