@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Subscription\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('assinar/checkout', [SubscriptionController::class, 'store'])->name('subscriptions.store'); 
+Route::get('plano/basico', [SubscriptionController::class, 'index'])->name('subscriptions.checkout'); 
+Route::get('plano/premium', [SubscriptionController::class, 'premium'])->name('subscriptions.premium'); 
 
 Route::get('/', function () {
     return view('welcome');
