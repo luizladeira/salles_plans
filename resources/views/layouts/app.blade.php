@@ -13,7 +13,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        {{-- LIB DO STRIPE --}}
+        {{-- Lib Stripe --}}
         <script src="https://js.stripe.com/v3/"></script>
 
     </head>

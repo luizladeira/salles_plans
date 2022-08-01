@@ -24,8 +24,9 @@ class SubscriptionController extends Controller
     }
 
     public function store(Request $request){
+
         $request->user()
-                        ->newSubscription('default', 'price_1LLXmSBEGY88wy4LCsFdeUPe' )
+                        ->newSubscription('default', 'price_1LLXkaBEGY88wy4LU07gCYAy')
                         ->create($request->token);
 
         return redirect()->route('subscriptions.premium');                

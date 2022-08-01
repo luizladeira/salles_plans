@@ -16,7 +16,7 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-4 py-2">
-                                <div id="card-element" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"></div>
+                                <div id="card-element"></div>
                             </div>
                             
                             <div class="col-span-6 sm:col-span-4 py-2">
@@ -31,7 +31,7 @@
 </x-app-layout>
 
 
-<script type="text/javascript">
+<script>
 
 const stripe = Stripe("{{config('cashier.key')}}");
 const elements = stripe.elements();
@@ -39,36 +39,44 @@ const cardElement = elements.create('card'); //dados do cartão
 cardElement.mount('#card-element');
 
 //subscription payment - checkout
-const form = document.getElementById('form')
-const cardHolderName = document.getElementById('card-holder-name')
-const clientSecret = cardButton.dataset.secret
+const form = document.getElementById('form');
+const cardHolderName = document.getElementById('card-holder-name');
+const cardButton = document.getElementById('card-buttom');
+const clientSecret = cardButton.dataset.secret;
 
-alert("Dados Inválidos")
+
 form.addEventListener('submit', async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     
-   const {setupIntent, error} = await stripe.confirmCardSetup(
-        clientSecret,{
-        payment_method: {
-            card: cardElement,
-            billing_details: {
-                name: cardHolderName.value
-                
+    const { setupIntent, error } = await stripe.confirmCardSetup(
+        clientSecret, {
+            payment_method: {
+                card: cardElement,
+                billing_details: {
+                    name: cardHolderName.value
                 }
             }
         }
     );
 
+
     //trata o retorno
     if(error){
         alert("Dados Inválidos")
         console.log(error)
-    }else{
-        alert("Dados Válidos")
-        console.log(setupIntent)
+        return;
     }
 
-    //form.submit();
+
+    //criando um token do tipo input
+    let token = document.createElement('input')
+    token.setAttribute('type', 'hidden') //falando que o input tem o tipo hidden
+    token.setAttribute('name', 'token')
+    token.setAttribute('value', setupIntent.payment_method) 
+    form.appendChild(token)
+
+    form.submit()
+
 
 });
 
