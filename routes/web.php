@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('assinar/checkout', [SubscriptionController::class, 'store'])->name('subscriptions.store'); 
-Route::get('planos/basic', [SubscriptionController::class, 'index'])->name('subscriptions.checkout'); 
-Route::get('planos/premium', [SubscriptionController::class, 'premium'])->name('subscriptions.premium'); 
+Route::get('plano/basico', [SubscriptionController::class, 'index'])->name('subscriptions.checkout'); 
+Route::get('plano/premium', [SubscriptionController::class, 'premium'])->name('subscriptions.premium'); 
 
 Route::get('/', function () {
     return view('welcome');

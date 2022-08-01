@@ -14,12 +14,24 @@ class SubscriptionController extends Controller
     }
 
     public function index(){
-        return view('subscriptions.index',[
-            'intent' => auth()->user()->createSetupIntent(),
-        ]); //[intencao de pagamento do stripe]
+
+        if(auth()->user()->subscribed('default')){
+            return redirect()->route('subscriptions.premium');
+        }
+            return view('subscriptions.index',[
+                'intent' => auth()->user()->createSetupIntent(),
+            ]); //[intencao de pagamento do stripe]
+        
+        
     }
 
     public function premium(){
+
+        //Validação para saber se ele é usuário
+        if(!auth()->user()->subscribed('default')){
+            return redirect()->route('subscriptions.checkout');
+        }
+
         return view('subscriptions.premium');
     }
 

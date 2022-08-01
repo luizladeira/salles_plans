@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Checkout') }}
+            {{ __('Pagamento') }}
         </h2>
     </x-slot>
 
@@ -53,7 +53,7 @@ form.addEventListener('submit', async (e) => {
             payment_method: {
                 card: cardElement,
                 billing_details: {
-                    name: cardHolderName.value
+                    name: cardHolderName.value //nome do cartao
                 }
             }
         }
@@ -69,13 +69,12 @@ form.addEventListener('submit', async (e) => {
 
 
     //criando um token do tipo input
-    let token = document.createElement('input')
-    token.setAttribute('type', 'hidden') //falando que o input tem o tipo hidden
-    token.setAttribute('name', 'token')
-    token.setAttribute('value', setupIntent.payment_method) 
-    form.appendChild(token)
-
-    form.submit()
+    let token = document.createElement('input') //criando um input
+    token.setAttribute('type', 'hidden') //input do tipo hidden
+    token.setAttribute('name', 'token') //input com nome de token
+    token.setAttribute('value', setupIntent.payment_method) //valor pegando do payment method
+    form.appendChild(token) //coloco o input completo de um form
+    form.submit() //enviar via submit com js
 
 
 });
