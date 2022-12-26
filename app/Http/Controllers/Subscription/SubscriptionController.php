@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SubscriptionController extends Controller
 {
-       //teste
+    
     public function __construct(){
         $this->middleware(['auth']);
     }
