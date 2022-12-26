@@ -16,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('assinar/checkout', [SubscriptionController::class, 'store'])->name('subscriptions.store'); 
 Route::get('plano/basico', [SubscriptionController::class, 'index'])->name('subscriptions.checkout'); 
-Route::get('plano/premium', [SubscriptionController::class, 'premium'])->name('subscriptions.premium'); 
+Route::get('plano/premium', [SubscriptionController::class, 'premium'])->name('subscriptions.premium')->middleware(['subscribed']); 
+Route::get('minha-assinatura', [SubscriptionController::class, 'account'])->name('subscriptions.account'); 
+Route::get('minha-assinatura/fatura/{invoice}', [SubscriptionController::class, 'downloadInvoice'])->name('subscriptions.invoice.download'); 
+Route::get('minha-assinatura/cancelar', [SubscriptionController::class, 'unsubscribe'])->name('subscriptions.unsubscribe'); 
+Route::get('minha-assinatura/reativar', [SubscriptionController::class, 'reactivateSubscription'])->name('subscriptions.reactivateSubscription'); 
+
+
 
 Route::get('/', function () {
     return view('welcome');
