@@ -44,4 +44,34 @@ class SubscriptionController extends Controller
         return redirect()->route('subscriptions.premium');                
     }
 
+    public function account(){
+        $invoices = auth()->user()->invoices();
+        return view('subscriptions.account', compact('invoices'));
+    }
+
+    public function downloadInvoice($invoiceId){
+        
+        return Auth::user()->downloadInvoice($invoiceId, [
+                'vendor' => config('app.name'),
+                'product' => 'Assinatura Premium'
+            ]
+         );
+
+    }
+
+    //cancelar assinatura
+    public function unsubscribe(){
+        Auth::user()->subscription('default')->cancel();
+        return redirect()->route('subscriptions.account');
+
+    }
+    
+    //reativar assinatura
+    public function reactivateSubscription(){
+        Auth::user()->subscription('default')->resume();
+        return redirect()->route('subscriptions.account');
+
+    }
+
+
 }

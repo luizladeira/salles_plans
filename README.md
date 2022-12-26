@@ -33,3 +33,6 @@ Caso deseje, configure o Framework para utilizar 'America/Sao_Paulo' como data h
 
 Colocando plugin de tradução para Português (Brasil)
 [https://github.com/lucascudo/laravel-pt-BR-localization]
+
+## Criando um middleware para verificar se o usuario está escrito ou não
+php artisan make:middleware EnsureUserIsSubscribed
