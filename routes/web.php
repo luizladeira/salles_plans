@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Subscription\SubscriptionController;
+use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,14 +23,22 @@ Route::get('minha-assinatura/fatura/{invoice}', [SubscriptionController::class, 
 Route::get('minha-assinatura/cancelar', [SubscriptionController::class, 'unsubscribe'])->name('subscriptions.unsubscribe'); 
 Route::get('minha-assinatura/reativar', [SubscriptionController::class, 'reactivateSubscription'])->name('subscriptions.reactivateSubscription'); 
 
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+/***
+ * SITE
+ */
+Route::get('/', [SiteController::class, 'index'])->name('site.home');
+
+
+/*
+Route::get('/', function () {
+    return view('welcome');
+});
+*/
+
+
 
 require __DIR__.'/auth.php';
