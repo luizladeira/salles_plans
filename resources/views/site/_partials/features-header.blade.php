@@ -4,7 +4,7 @@
             <div class="hero__content">
                 <h2 class="hero__title">Precisa de agilidade?</h2>
                 <p class="hero__text text-gray-600">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    Pare de ficar se matando com tarefas manuais, nos da <b>Agilize <span class="color">Seu</span> Negócio</b> ajudamos sua empresa a projetar a melhor solução de acordo com sua regra de negócio fazendo sua empresa ganhar mais rentabilidade em curto prazo.
                 </p>
                 <div class="text-center lg:text-left mt-3"><a
                         class="button button--filled button--primary button--bordered mt-2"
