@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 /**
  * PAINEL ADMIN
  */
-Route::post('assinar/checkout', [SubscriptionController::class, 'store'])->name('subscriptions.store');
-Route::get('plano/basico', [SubscriptionController::class, 'index'])->name('subscriptions.checkout');
+Route::post('assinar/checkout-fixo', [SubscriptionController::class, 'store'])->name('subscriptions.store');
+Route::get('assinar/checkout', [SubscriptionController::class, 'index'])->name('subscriptions.checkout');
 Route::get('plano/premium', [SubscriptionController::class, 'premium'])->name('subscriptions.premium')->middleware(['subscribed']);
 Route::get('minha-assinatura', [SubscriptionController::class, 'account'])->name('subscriptions.account');
 Route::get('minha-assinatura/fatura/{invoice}', [SubscriptionController::class, 'downloadInvoice'])->name('subscriptions.invoice.download');
@@ -34,6 +34,7 @@ Route::get('/dashboard', function () {
  * SITE - VISÃO CLIENTE
  */
 Route::get('/', [SiteController::class, 'index'])->name('site.home');
+Route::get('assinar/plano/{url}', [SiteController::class, 'createSessionPlan'])->name('choice.plan');
 
 
 

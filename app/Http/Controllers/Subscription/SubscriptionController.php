@@ -8,21 +8,24 @@ use Illuminate\Support\Facades\Auth;
 
 class SubscriptionController extends Controller
 {
-    
+
     public function __construct(){
         $this->middleware(['auth']);
     }
 
     public function index(){
 
+
         if(auth()->user()->subscribed('default')){
             return redirect()->route('subscriptions.premium');
         }
+
             return view('subscriptions.index',[
                 'intent' => auth()->user()->createSetupIntent(),
+                'plan' => session('plan'),
             ]); //[intencao de pagamento do stripe]
-        
-        
+
+
     }
 
     public function premium(){
@@ -37,11 +40,14 @@ class SubscriptionController extends Controller
 
     public function store(Request $request){
 
+        $plan_stripe = session('plan');
+        $stripe_id = $plan_stripe->stripe_id;
+
         $request->user()
-                        ->newSubscription('default', 'price_1LLXkaBEGY88wy4LU07gCYAy')
+                        ->newSubscription('default', $stripe_id)
                         ->create($request->token);
 
-        return redirect()->route('subscriptions.premium');                
+        return redirect()->route('subscriptions.premium');
     }
 
     public function account(){
@@ -50,7 +56,7 @@ class SubscriptionController extends Controller
     }
 
     public function downloadInvoice($invoiceId){
-        
+
         return Auth::user()->downloadInvoice($invoiceId, [
                 'vendor' => config('app.name'),
                 'product' => 'Assinatura Premium'
@@ -65,7 +71,7 @@ class SubscriptionController extends Controller
         return redirect()->route('subscriptions.account');
 
     }
-    
+
     //reativar assinatura
     public function reactivateSubscription(){
         Auth::user()->subscription('default')->resume();
