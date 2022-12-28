@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 /**
  * PAINEL ADMIN
  */
-Route::post('assinar/checkout-fixo', [SubscriptionController::class, 'store'])->name('subscriptions.store');
-Route::get('assinar/checkout', [SubscriptionController::class, 'index'])->name('subscriptions.checkout');
+Route::post('assinar/checkout-fixo', [SubscriptionController::class, 'store'])->name('subscriptions.store')->middleware(['check.choice.plan']);
+Route::get('assinar/checkout', [SubscriptionController::class, 'index'])->name('subscriptions.checkout')->middleware(['check.choice.plan']);
 Route::get('plano/premium', [SubscriptionController::class, 'premium'])->name('subscriptions.premium')->middleware(['subscribed']);
 Route::get('minha-assinatura', [SubscriptionController::class, 'account'])->name('subscriptions.account');
 Route::get('minha-assinatura/fatura/{invoice}', [SubscriptionController::class, 'downloadInvoice'])->name('subscriptions.invoice.download');
