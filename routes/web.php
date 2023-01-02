@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
  */
 Route::post('assinar/checkout-fixo', [SubscriptionController::class, 'store'])->name('subscriptions.store')->middleware(['check.choice.plan']);
 Route::get('assinar/checkout', [SubscriptionController::class, 'index'])->name('subscriptions.checkout')->middleware(['check.choice.plan']);
+Route::get('lista-de-produtos', [SubscriptionController::class, 'list_products'])->name('subscriptions.list_products')->middleware(['subscribed']);
 Route::get('plano/premium', [SubscriptionController::class, 'premium'])->name('subscriptions.premium')->middleware(['subscribed']);
 Route::get('minha-assinatura', [SubscriptionController::class, 'account'])->name('subscriptions.account');
 Route::get('minha-assinatura/fatura/{invoice}', [SubscriptionController::class, 'downloadInvoice'])->name('subscriptions.invoice.download');
@@ -29,6 +30,7 @@ Route::get('minha-assinatura/reativar', [SubscriptionController::class, 'reactiv
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 
 /***
  * SITE - VISÃO CLIENTE

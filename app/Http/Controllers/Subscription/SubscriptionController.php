@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Subscription;
 
 use App\Http\Controllers\Controller;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +37,11 @@ class SubscriptionController extends Controller
         }
 
         return view('subscriptions.premium');
+    }
+
+    public function list_products(Plan $plan){
+        $plans = $plan->with('features')->get();
+        return view('subscriptions.list_products', compact('plans'));
     }
 
     public function store(Request $request){

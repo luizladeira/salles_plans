@@ -1,4 +1,4 @@
-<html lang="pt-BR">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8" />
     <title>Home - {{ config('app.name') }}</title>
@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
     <link rel="icon" href="{{ asset('images/favicon.png') }}">
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
 </head>
