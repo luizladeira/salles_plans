@@ -9,7 +9,7 @@
                          e conheça nossas soluções em transformação digital, tecnologia e negócios para agilizar sua empresa em serviços manuais.
                     </p>
                     <div>
-                        <a data-scroll="" href="#contact" class="nav__link button button--secondary button--border button--rounded ml-8" style="float:right">
+                        <a data-scroll="" href="#fale-conosco" class="nav__link button button--secondary button--border button--rounded ml-8" style="float:right">
                             Converse conosco
                         </a>
                     </div>

@@ -1,4 +1,4 @@
-<section id="contact" class="relative pb-20" data-section>
+<section id="fale-conosco" class="relative pb-20" data-section>
     <div class="bg-after z-0"></div>
     <div class="c-container z-10 relative">
         <div class="bg-white rounded shadow-lg p-6 w-full md:w-3/5 md:p-8 mx-auto">

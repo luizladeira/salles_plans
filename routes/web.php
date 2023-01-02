@@ -36,6 +36,7 @@ Route::get('/dashboard', function () {
  * SITE - VISÃO CLIENTE
  */
 Route::get('/', [SiteController::class, 'index'])->name('site.home');
+Route::get('/#planos-de-hospedagem', [SiteController::class, 'index'])->name('site.planos_hospedagem');
 Route::get('assinar/plano/{url}', [SiteController::class, 'createSessionPlan'])->name('choice.plan');
 
 

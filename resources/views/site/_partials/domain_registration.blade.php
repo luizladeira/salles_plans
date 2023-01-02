@@ -1,4 +1,4 @@
-<section id="domain_registration" class="bg-white py-20 m-h-screen">
+<section id="registro-de-dominios" class="bg-white py-20 m-h-screen">
     <div class="c-container">
             <div class="w-content justify-content-start text-center mx-auto">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ __('Registro de Domínio') }}</h2>
