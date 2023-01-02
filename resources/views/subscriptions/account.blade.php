@@ -2,19 +2,19 @@
     .blue-color {
         color:blue;
     }
-     
+
     .green-color {
         color:green;
     }
-     
+
     .teal-color {
         color:teal;
     }
-     
+
     .yellow-color {
     color:yellow;
     }
-    
+
     .red-color {
         color:red;
     }
@@ -46,14 +46,14 @@
                          <p>
                                 Você ainda não possui nenhuma assinatura conosco.
                             <br/>
-                                Veja os nossos planos e  <a href="#" title="clique aqui" alt="clique aqui"> assine já! </a>
+                                Veja os nossos planos e  <a href="{{route('site.planos_hospedagem')}}" title="clique aqui" alt="clique aqui"> assine já! </a>
                          </p>
                     @endif
                 </div>
             </div>
         </div>
     </div>
-    
+
     @if(Auth::user()->subscription('default'))
     <div class="py-1">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -65,10 +65,10 @@
                             <th>Data</th>
                             <th>Preço</th>
                             <th>Download</th>
-                        
+
                         </tr>
                     </thead>
-                    <tbody>                    
+                    <tbody>
                         @foreach($invoices as $invoice)
                         <tr>
                             <td>{{ $invoice->date()->toFormattedDateString() }}</td>
@@ -77,7 +77,7 @@
                                 <a href="{{ route('subscriptions.invoice.download', $invoice->id) }}" title="Download da Fatura" alt="Clique aqui para fazer o download de sua fatura"><i class="bi bi-file-earmark-pdf-fill green-color"></i></a>
                             </td>
                         </tr>
-                        @endforeach                   
+                        @endforeach
                     </tbody>
                     </table>
                 </div>

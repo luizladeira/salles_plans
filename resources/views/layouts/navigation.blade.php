@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="/images/logo.png" class="block h-10 w-auto fill-current text-gray-600" />              
+                        <img src="/images/logo.png" class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
@@ -15,6 +15,16 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('subscriptions.list_products')" :active="request()->routeIs('subscriptions.list_products')">
+                        {{ __('Planos de Hospedagem') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('subscriptions.account')" :active="request()->routeIs('subscriptions.account')">
+                        {{ __('Minha Assinatura') }}
+                    </x-nav-link>
+
+
                 </div>
             </div>
 

@@ -1,4 +1,4 @@
-<section id="about" class="bg-white py-4">
+<section id="quem-somos" class="bg-white py-4">
     <div class="c-container">
         <div class="flex flex-wrap py-10">
             <div class="flex-initial lg:w-1/3 p-4">

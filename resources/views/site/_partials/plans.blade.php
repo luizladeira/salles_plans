@@ -1,4 +1,4 @@
-<section id="pricing" class="py-20 m-h-screen" data-section="">
+<section id="planos-de-hospedagem" class="py-20 m-h-screen" data-section="">
     <div class="c-container">
         <div class="w-content text-center mx-auto">
             <h2 class="text-3xl font-bold text-gray-800 mb-4">Serviço de Hospedagem</h2>
